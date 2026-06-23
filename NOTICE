@@ -1,0 +1,24 @@
+cnpg-timescaledb
+================
+
+The packaging in this repository (Dockerfile, GitHub Actions workflows, and
+Kubernetes manifests) is licensed under the MIT License (see LICENSE).
+
+The CONTAINER IMAGE built from this repository aggregates third-party software,
+each component of which remains under its own license:
+
+  * PostgreSQL and the CloudNativePG operand base image
+      - PostgreSQL License (https://www.postgresql.org/about/licence/)
+      - CloudNativePG base image: Apache License 2.0
+        (https://github.com/cloudnative-pg/postgres-containers)
+
+  * TimescaleDB (https://github.com/timescale/timescaledb)
+      - Apache-2.0 for the core ("Apache 2 edition")
+      - Timescale License (TSL) for community features such as compression,
+        continuous aggregate policies, and background jobs
+        (https://github.com/timescale/timescaledb/blob/main/tsl/LICENSE-TIMESCALE)
+
+No modification is made to the third-party software; it is installed unmodified
+from the official Timescale APT repository. Redistribution and use of the
+resulting image must comply with each component's license. Review the TSL terms
+before redistributing images that include TimescaleDB community features.

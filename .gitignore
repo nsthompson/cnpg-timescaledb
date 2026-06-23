@@ -1,0 +1,5 @@
+# Local build artifacts
+*.tar
+*.tar.gz
+*.log
+.DS_Store

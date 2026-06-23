@@ -1,0 +1,41 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: timescale-cluster
+spec:
+  instances: 3
+
+  # Replace <OWNER> with your GitHub org/user. The CI publishes several tags;
+  # "pg18" is the rolling tag for the latest build on the default branch.
+  # Pin to an immutable tag (e.g. pg18-ts2.24.0 or a :sha-<short>) in production.
+  imageName: ghcr.io/<OWNER>/cnpg-timescaledb:pg18
+
+  postgresql:
+    # TimescaleDB MUST be preloaded at server start.
+    shared_preload_libraries:
+      - timescaledb
+
+    parameters:
+      # CloudNativePG does NOT run timescaledb-tune, so set these to match your
+      # node resources. The values below are illustrative for a node with ~8 GB
+      # RAM allocated to Postgres; adjust before going to production.
+      shared_buffers: "2GB"
+      effective_cache_size: "6GB"
+      maintenance_work_mem: "1GB"
+      work_mem: "32MB"
+      max_worker_processes: "16"
+      # TimescaleDB background workers (jobs, continuous-aggregate refresh, etc.)
+      # must fit within max_worker_processes alongside parallel workers.
+      timescaledb.max_background_workers: "8"
+
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+
+  storage:
+    size: 50Gi
+
+  # Optional but recommended: a dedicated volume for WAL.
+  walStorage:
+    size: 20Gi

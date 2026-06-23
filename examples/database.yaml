@@ -1,0 +1,15 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: app-timescaledb
+spec:
+  cluster:
+    name: timescale-cluster
+  # The target database (created by the Cluster's bootstrap.initdb above).
+  name: app
+  owner: app
+  # CloudNativePG reconciles this declaratively, running
+  # `CREATE EXTENSION timescaledb` if it is not already present.
+  extensions:
+    - name: timescaledb
+      ensure: present
