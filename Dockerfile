@@ -16,7 +16,7 @@
 #     will use the Barman Cloud Plugin (the in-core support lived in the now
 #     deprecated "system" images).
 # ---------------------------------------------------------------------------
-ARG BASE_IMAGE=ghcr.io/cloudnative-pg/postgresql:18.3-standard-bookworm
+ARG BASE_IMAGE=ghcr.io/cloudnative-pg/postgresql:18.4-standard-bookworm
 
 FROM ${BASE_IMAGE}
 
