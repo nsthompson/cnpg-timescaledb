@@ -112,8 +112,7 @@ Cluster manifest (see `examples/cluster.yaml`) to match your node sizing.
 `renovate.json` configures [Renovate](https://docs.renovatebot.com/) to open PRs
 that bump `TIMESCALEDB_VERSION` (tracking TimescaleDB releases) and the CNPG base
 image minor version. PostgreSQL **major** upgrades require manual approval via
-the Renovate dependency dashboard. Install the Renovate GitHub App on the repo to
-activate this; it is optional and unrelated to the build itself.
+the Renovate dependency dashboard.
 
 ## Licensing
 
