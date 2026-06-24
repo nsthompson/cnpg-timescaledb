@@ -1,3 +1,4 @@
+---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -5,10 +6,10 @@ metadata:
 spec:
   instances: 3
 
-  # Replace <OWNER> with your GitHub org/user. The CI publishes several tags;
+  # The CI publishes several tags;
   # "pg18" is the rolling tag for the latest build on the default branch.
   # Pin to an immutable tag (e.g. pg18-ts2.24.0 or a :sha-<short>) in production.
-  imageName: ghcr.io/<OWNER>/cnpg-timescaledb:pg18
+  imageName: ghcr.io/nsthompson/cnpg-timescaledb:pg18
 
   postgresql:
     # TimescaleDB MUST be preloaded at server start.
