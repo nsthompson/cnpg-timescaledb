@@ -25,7 +25,7 @@ ARG PG_MAJOR=18
 
 # Pin a specific TimescaleDB upstream version (e.g. 2.24.0).
 # Leave empty to install the latest available in the APT repository.
-ARG TIMESCALEDB_VERSION=2.24.0
+ARG TIMESCALEDB_VERSION=2.28.1
 
 # Everything below installs TimescaleDB from the official Timescale APT repo.
 USER root
