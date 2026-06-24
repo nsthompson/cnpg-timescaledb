@@ -25,7 +25,7 @@ env:
   # Must match the major version of DEFAULT_BASE_IMAGE.
   PG_MAJOR: "18"
   DEFAULT_BASE_IMAGE: "ghcr.io/cloudnative-pg/postgresql:18.3-standard-bookworm"
-  DEFAULT_TIMESCALEDB_VERSION: "2.24.0"
+  DEFAULT_TIMESCALEDB_VERSION: "2.28.1"
   PLATFORMS: "linux/amd64,linux/arm64"
 
 concurrency:
