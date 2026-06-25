@@ -18,7 +18,7 @@ the simplest reliable path. See the licensing note at the bottom.
 
 ## Repository layout
 
-```
+```text
 .
 ├── .github/workflows/build.yml   # CI: multi-arch build, push, sign
 ├── Dockerfile                    # CNPG base + TimescaleDB
@@ -70,11 +70,13 @@ the simplest reliable path. See the licensing note at the bottom.
 The CI publishes, on pushes to `main`:
 
 - `latest`
-- `pg18` — rolling tag for the current major
-- `pg18-ts<version>` — e.g. `pg18-ts2.24.0`
+- `18` — rolling tag for the current major
+- `18-ts<version>` — e.g. `18-ts2.24.0`
 - `sha-<short>` — immutable, recommended for production pinning
 
-On a `vX.Y.Z` git tag it additionally publishes `X.Y.Z` and `X.Y`.
+On a `vX.Y.Z` git tag it additionally publishes `release-X.Y.Z` and `release-X.Y`.
+These carry a `release-` prefix on purpose: a bare `X.Y.Z` tag would be misread by
+CloudNativePG's webhook as a PostgreSQL major version.
 
 Every image is multi-arch and ships with an SBOM, SLSA provenance, and a keyless
 [cosign](https://github.com/sigstore/cosign) signature.

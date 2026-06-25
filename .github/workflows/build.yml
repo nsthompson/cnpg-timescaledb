@@ -82,12 +82,12 @@ jobs:
           images: ${{ steps.img.outputs.name }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=pg${{ env.PG_MAJOR }},enable={{is_default_branch}}
-            type=raw,value=pg${{ env.PG_MAJOR }}-ts${{ steps.args.outputs.timescaledb_version }},enable={{is_default_branch}}
+            type=raw,value=${{ env.PG_MAJOR }},enable={{is_default_branch}}
+            type=raw,value=${{ env.PG_MAJOR }}-ts${{ steps.args.outputs.timescaledb_version }},enable={{is_default_branch}}
             type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern=release-{{version}}
+            type=semver,pattern=release-{{major}}.{{minor}}
             type=sha,format=short
           labels: |
             org.opencontainers.image.title=cnpg-timescaledb
